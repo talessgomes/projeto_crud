@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desafioWL.entities.Item;
 import com.example.desafioWL.entities.User;
@@ -19,7 +20,7 @@ import com.example.desafioWL.entities.exception.ResourceNotFoundException;
 import com.example.desafioWL.repositories.ItemRepository;
 import com.example.desafioWL.repositories.UserRepository;
 
-@Controller
+@RestController
 public class UserController {
 
 	@Autowired

@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desafioWL.entities.Pedido;
 import com.example.desafioWL.entities.pk.PedidoPK;
 import com.example.desafioWL.repositories.PedidoRepository;
 
-@Controller
+@RestController
 public class PedidoController {
 
 	@Autowired
