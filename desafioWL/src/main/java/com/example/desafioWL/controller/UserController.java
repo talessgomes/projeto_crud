@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desafioWL.entities.Item;
 import com.example.desafioWL.entities.User;
@@ -20,7 +19,7 @@ import com.example.desafioWL.entities.exception.ResourceNotFoundException;
 import com.example.desafioWL.repositories.ItemRepository;
 import com.example.desafioWL.repositories.UserRepository;
 
-@RestController
+@Controller
 public class UserController {
 
 	@Autowired
@@ -50,20 +49,20 @@ public class UserController {
 	}
 
 	// faz o Map
-	@GetMapping("users")
+	@GetMapping("/users")
 	public String colaboradores(Model model) {
 		model.addAttribute("listUsers", rep.findAll());
 		return "users/index";
 	}
 
 	// Cadastrar usuário
-	@GetMapping("users/cadastrar")
+	@GetMapping("/users/cadastrar")
 	public String cadastrarColaborador(@ModelAttribute("user") User user) {
 		return "users/form";
 	}
 
 	// procura o id
-	@GetMapping("users/{id}")
+	@GetMapping("/users/{id}")
 	public String alterarUser(@PathVariable("id") long id, Model model) {
 		Optional<User> userOpt = rep.findById(id);
 		if (userOpt.isEmpty()) {
@@ -75,7 +74,7 @@ public class UserController {
 	}
 
 	// salvar usuário
-	@PostMapping("user/salvar")
+	@PostMapping("/user/salvar")
 	public String salvarUser(@ModelAttribute("user") User user, @ModelAttribute("item") Item item) {
 		List<User> listAll = rep.findAll();
 		for (User u: listAll) {
@@ -89,7 +88,7 @@ public class UserController {
 	}
 
 	// deletando usuário
-	@GetMapping("users/remover/{id}")
+	@GetMapping("/users/remover/{id}")
 	public String removerUser(@PathVariable("id") long id) {
 		Optional<User> userOpt = rep.findById(id);
 		if (userOpt.isEmpty()) {

@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desafioWL.entities.Pedido;
 import com.example.desafioWL.entities.pk.PedidoPK;
 import com.example.desafioWL.repositories.PedidoRepository;
 
-@RestController
+@Controller
 public class PedidoController {
 
 	@Autowired
@@ -26,20 +25,20 @@ public class PedidoController {
 	}
 
 	//mapeamento da URL
-	@GetMapping("pedidos")
+	@GetMapping("/pedidos")
 	public String pedidos(Model model) {
 		model.addAttribute("listaPedidoes", repo.findAll());
 		return "pedidos/index";
 	}
 
 	//cadastro de pedido
-	@GetMapping("pedidos/cadastrar")
+	@GetMapping("/pedidos/cadastrar")
 	public String cadastrarPedido(@ModelAttribute("pedido") Pedido pedido) {
 		return "pedidos/form";
 	}
 
 	//encontrar por ID
-	@GetMapping("pedidos/{id}")
+	@GetMapping("/pedidos/{id}")
 	public String alterarPedido(@PathVariable("id") PedidoPK id, Model model) {
 		Optional<Pedido> pedidoOpt = repo.findById(id);
 		if (pedidoOpt.isEmpty()) {
@@ -51,14 +50,14 @@ public class PedidoController {
 	}
 
 	//salvar novo pedido
-	@PostMapping("pedidos/salvar")
+	@PostMapping("/pedidos/salvar")
 	public String salvarPedido(@ModelAttribute("pedido") Pedido pedido) {
 		repo.save(pedido);
 		return "pedidos/form";
 	}
 
 	//remover pedido
-	@GetMapping("pedidos/remover/{id}")
+	@GetMapping("/pedidos/remover/{id}")
 	public String removerPedido(@PathVariable("id") PedidoPK id) {
 		Optional<Pedido> pedidoOpt = repo.findById(id);
 		if (pedidoOpt.isEmpty()) {
