@@ -74,7 +74,7 @@ public class UserController {
 	}
 
 	// salvar usuário
-	@PostMapping("user/salvar")
+	@PostMapping("users/salvar")
 	public String salvarUser(@ModelAttribute("user") User user, @ModelAttribute("item") Item item) {
 		List<User> listAll = rep.findAll();
 		for (User u: listAll) {
