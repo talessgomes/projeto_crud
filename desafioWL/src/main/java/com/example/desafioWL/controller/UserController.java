@@ -52,7 +52,7 @@ public class UserController {
 	@GetMapping("/users")
 	public String colaboradores(Model model) {
 		model.addAttribute("listUsers", rep.findAll());
-		return "users/index";
+		return "index";
 	}
 
 	// Cadastrar usuário
