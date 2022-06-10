@@ -76,7 +76,7 @@ public class UserController {
 	// salvar usuário
 	@PostMapping("/user/salvar")
 	public String salvarUser(@ModelAttribute("user") User user, @ModelAttribute("item") Item item) {
-		List<User> listAll = rep.findAll();
+		List<User> listAll = (List<User>) rep.findAll();
 		for (User u: listAll) {
 			if(u.getItem() == user.getItem()) {
 				throw new ItemException();
