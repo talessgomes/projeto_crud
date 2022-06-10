@@ -41,14 +41,14 @@ public class ItemController {
 	}
 
 	//mapeamento da URL
-	@GetMapping("/itens")
+	@GetMapping("itens")
 	public String itens(Model model) {
 		model.addAttribute("listaItens", rep.findAll());
 		return "users/index";
 	}
 
 	//cadastro de lanche
-	@GetMapping("/itens/cadastrar")
+	@GetMapping("itens/cadastrar")
 	public String cadastrarItem(@ModelAttribute("item") Item item) {
 		return "users/form";
 	}
@@ -66,14 +66,14 @@ public class ItemController {
 	}
 
 	//salvar novo lanche
-	@PostMapping("/itens/salvar")
+	@PostMapping("itens/salvar")
 	public String salvarItem(@ModelAttribute("lanche") Item item) {
 		rep.save(item);
 		return "users/form";
 	}
 
 	//remover lanche
-	@GetMapping("/itens/remover/{id}")
+	@GetMapping("itens/remover/{id}")
 	public String removerItem(@PathVariable("id") long id) {
 		Optional<Item> itemOpt = rep.findById(id);
 		if (itemOpt.isEmpty()) {
