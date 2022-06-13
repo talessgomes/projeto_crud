@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NotFound;
-
 @Entity
 @Table(name = "tb_colaborador")
 public class User implements Serializable {
@@ -24,7 +22,6 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String nome;
-	
 	
 	@Column(unique = true)
 	String cpf;

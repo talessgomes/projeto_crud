@@ -82,8 +82,6 @@ public class UserController {
 				throw new ItemException();
 			}
 		}
-
-		
 		rep.save(user);
 		repItem.save(item);
 		return "users/form";
